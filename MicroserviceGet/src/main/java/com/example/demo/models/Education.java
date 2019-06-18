@@ -39,23 +39,23 @@ public class Education implements Serializable{
 	
 	private String description;
 	
-	//bi-directional many-to-one association to Employee
-	@OneToMany(mappedBy="education")
-	@JsonIgnore
-	private List<Employee> employees;
-	
-	public Employee addEmployee(Employee employee) {
-		getEmployees().add(employee);
-		employee.setEducation(this);
-
-		return employee;
-	}
-
-	public Employee removeEmployee(Employee employee) {
-		getEmployees().remove(employee);
-		employee.setEducation(null);
-
-		return employee;
-	}
+//	//bi-directional many-to-one association to Employee
+//	@OneToMany(mappedBy="education")
+//	@JsonIgnore
+//	private List<Employee> employees;
+//	
+//	public Employee addEmployee(Employee employee) {
+//		getEmployees().add(employee);
+//		employee.setEducation(this);
+//
+//		return employee;
+//	}
+//
+//	public Employee removeEmployee(Employee employee) {
+//		getEmployees().remove(employee);
+//		employee.setEducation(null);
+//
+//		return employee;
+//	}
 
 }
