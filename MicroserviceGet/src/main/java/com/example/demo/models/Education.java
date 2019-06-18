@@ -21,41 +21,44 @@ import lombok.Data;
 
 @Entity
 @Data
-@NamedQuery(name="Education.findAll", query="SELECT e FROM Education e")
+//@NamedQuery(name="Education.findAll", query="SELECT e FROM Education e")
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
 public class Education implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	
-	
+	@NotBlank(message = "Education name can't be blank.")
+	@Column
 	private String name;
 	
-	
+	@NotBlank(message = "Level of education can't be blank.")
+	@Column
 	private String levelOfEducation;
 	
-	
+	@Column
 	private String description;
 	
-//	//bi-directional many-to-one association to Employee
-//	@OneToMany(mappedBy="education")
-//	@JsonIgnore
-//	private List<Employee> employees;
-//	
-//	public Employee addEmployee(Employee employee) {
-//		getEmployees().add(employee);
-//		employee.setEducation(this);
-//
-//		return employee;
-//	}
-//
-//	public Employee removeEmployee(Employee employee) {
-//		getEmployees().remove(employee);
-//		employee.setEducation(null);
-//
-//		return employee;
-//	}
+	//bi-directional many-to-one association to Employee
+	@OneToMany(mappedBy="education")
+	@JsonIgnore
+	private List<Employee> employees;
+	
+	public Employee addEmployee(Employee employee) {
+		getEmployees().add(employee);
+		employee.setEducation(this);
+
+		return employee;
+	}
+
+	public Employee removeEmployee(Employee employee) {
+		getEmployees().remove(employee);
+		employee.setEducation(null);
+
+		return employee;
+	}
 
 }

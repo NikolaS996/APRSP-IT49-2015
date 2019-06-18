@@ -24,24 +24,23 @@ import lombok.Data;
 
 @Entity
 @Data
-@NamedQuery(name="Sector.findAll", query="SELECT s FROM Sector s")
+//@NamedQuery(name="Sector.findAll", query="SELECT s FROM Sector s")
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
-@Table(name = "sector")
+//@Table(name = "sector")
 public class Sector implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@SequenceGenerator(name="SECTOR_ID_GENERATOR", sequenceName="SECTOR_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SECTOR_ID_GENERATOR")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	
-	@Column
+
 	@NotBlank(message = "Sector name can't be blank.")
+	@Column
 	private String name;
 
-	@Column
 	@NotBlank(message = "Sector tag can't be blank.")
+	@Column
 	private String tag;
 
 	//bi-directional many-to-one association to Employee

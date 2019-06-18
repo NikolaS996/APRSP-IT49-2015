@@ -21,28 +21,27 @@ import lombok.Data;
 
 @Entity
 @Data
-@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
+//@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
-@Table(name = "employee")
+//@Table(name = "employee")
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@SequenceGenerator(name="EMPLOYEE_ID_GENERATOR", sequenceName="EMPLOYEE_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMPLOYEE_ID_GENERATOR")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	
-	@Column
 	@NotBlank(message = "Employee ID number can't be blank.")
+	@Column
 	private Integer idNumber;
 
-	@Column
 	@NotBlank(message = "Employee name can't be blank.")
+	@Column
 	private String name;
 
-	@Column
 	@NotBlank(message = "Employee surname can't be blank.")
+	@Column
 	private String surname;
 	
 	@ManyToOne

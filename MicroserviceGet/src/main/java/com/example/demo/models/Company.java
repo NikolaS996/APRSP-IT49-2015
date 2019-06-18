@@ -22,20 +22,19 @@ import lombok.Data;
 
 @Entity
 @Data
-@NamedQuery(name="Company.findAll", query="SELECT c FROM Company c")
+//@NamedQuery(name="Company.findAll", query="SELECT c FROM Company c")
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
-@Table(name = "company")
+//@Table(name = "company")
 public class Company implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@SequenceGenerator(name="COMPANY_ID_GENERATOR", sequenceName="COMPANY_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMPANY_ID_GENERATOR")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
-	@Column
 	@NotBlank(message = "Company name can't be blank.")
+	@Column
 	private String name;
 
 	@Column
