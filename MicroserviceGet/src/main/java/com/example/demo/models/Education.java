@@ -23,25 +23,20 @@ import lombok.Data;
 @Data
 @NamedQuery(name="Education.findAll", query="SELECT e FROM Education e")
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
-@Table(name = "education")
 public class Education implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@SequenceGenerator(name="EDUCATION_ID_GENERATOR", sequenceName="EDUCATION_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EDUCATION_ID_GENERATOR")
 	@Id
 	protected Long id;
 	
-	@Column
-	@NotBlank(message = "Education name can't be blank.")
+	
 	private String name;
 	
-	@Column(name="levelOfEducation")
-	@NotBlank(message = "Education level can't be blank.")
+	
 	private String levelOfEducation;
 	
-	@Column
+	
 	private String description;
 	
 	//bi-directional many-to-one association to Employee
