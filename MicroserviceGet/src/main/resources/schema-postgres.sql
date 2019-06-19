@@ -27,6 +27,7 @@ create table employee(
 	name varchar(50) not null,
 	surname varchar(50) not null,
 	id_number integer not null,
+	sequence_number integer not null,
 	education integer not null,
 	sector integer not null
 );

@@ -29,8 +29,9 @@ public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	@SequenceGenerator(name="EMPLOYEE_ID_GENERATOR", sequenceName="EMPLOYEE_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMPLOYEE_ID_GENERATOR")
+	protected int id;
 	
 	@NotBlank(message = "Employee ID number can't be blank.")
 	@Column
@@ -39,6 +40,10 @@ public class Employee implements Serializable {
 	@NotBlank(message = "Employee name can't be blank.")
 	@Column
 	private String name;
+	
+	@Column
+	@NotBlank(message = "Employee sequenceNumber can't be blank.")
+	private Integer sequenceNumber;
 
 	@NotBlank(message = "Employee surname can't be blank.")
 	@Column

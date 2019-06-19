@@ -39,7 +39,7 @@ public class GetController {
 
 	@GetMapping("educationId/{id}")
 	@ApiOperation(value = "Returns the education from the DB whose ID is passed as the path value")
-	public ResponseEntity<Education> getEducation(@PathVariable ("id") Long id){
+	public ResponseEntity<Education> getEducation(@PathVariable ("id") Integer id){
 		if(educationRepository.existsById(id))
 			return ResponseEntity.ok(educationRepository.getOne(id));
 		return ResponseEntity.notFound().build();
@@ -73,7 +73,7 @@ public class GetController {
 }
 	
 	@GetMapping("companyId/{id}")
-	public ResponseEntity<Company> getCompany(@PathVariable ("id") Long id){
+	public ResponseEntity<Company> getCompany(@PathVariable ("id") Integer id){
 		if(companyRepository.existsById(id))
 			return ResponseEntity.ok(companyRepository.getOne(id));
 		return ResponseEntity.notFound().build();
@@ -95,7 +95,7 @@ public class GetController {
 		return ResponseEntity.ok(employees);
 	}
 	@GetMapping("employeeId/{id}")
-	public ResponseEntity<Employee> getEmployee(@PathVariable ("id") Long id){
+	public ResponseEntity<Employee> getEmployee(@PathVariable ("id") Integer id){
 		if(employeeRepository.existsById(id))
 			return ResponseEntity.ok(employeeRepository.getOne(id));
 		return ResponseEntity.notFound().build();
@@ -116,7 +116,7 @@ public class GetController {
 		return ResponseEntity.ok(sectors);
 	}
 	@GetMapping("sectorId/{id}")
-	public ResponseEntity<Sector> getSektor(@PathVariable ("id") Long id){
+	public ResponseEntity<Sector> getSektor(@PathVariable ("id") Integer id){
 		if(sectorRepository.existsById(id))
 			return ResponseEntity.ok(sectorRepository.getOne(id));
 		return ResponseEntity.notFound().build();
@@ -129,7 +129,7 @@ public class GetController {
 		return ResponseEntity.ok(sectors);
 	}
 	@GetMapping("sectorForCompanyId/{id}")
-	public ResponseEntity<Collection<Sector>> sectorForCompanyId(@PathVariable("id") Long id){
+	public ResponseEntity<Collection<Sector>> sectorForCompanyId(@PathVariable("id") Integer id){
 		Company c = companyRepository.getOne(id);
 		Collection<Sector> sectors= sectorRepository.findByCompany(c);
 		if(CollectionUtils.isEmpty(sectors))

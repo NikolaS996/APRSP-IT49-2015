@@ -32,8 +32,9 @@ public class Sector implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	@SequenceGenerator(name="SECTOR_ID_GENERATOR", sequenceName="SECTOR_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SECTOR_ID_GENERATOR")
+	protected int id;
 
 	@NotBlank(message = "Sector name can't be blank.")
 	@Column
