@@ -8,8 +8,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @EnableDiscoveryClient
 @EnableRetry
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class},scanBasePackages={
-		"com.example.demo.reps.CompanyRepository", "com.example.application"})
+//@SpringBootApplication(exclude={DataSourceAutoConfiguration.class},scanBasePackages={
+//		"com.example.demo.reps.CompanyRepository", "com.example.application"})
+@SpringBootApplication
 public class MicroserviceGetApplication {
 
 	public static void main(String[] args) {

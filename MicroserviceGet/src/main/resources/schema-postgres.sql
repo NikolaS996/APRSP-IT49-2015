@@ -54,7 +54,7 @@ create index idxpk_sector on sector(id);
 
 create index idxfk_sector_company on sector(company);
 create index idxfk_employee_sector on employee(sector);
-create index idxfk_employee_education on radnik(education);
+create index idxfk_employee_education on employee(education);
 
 create sequence education_seq
 increment 1;
